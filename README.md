@@ -24,7 +24,27 @@ Ce projet est une application FastAPI conçue pour gérer les informations des �
 git clone <url_du_dépôt>
 ```
 
-2. Installez les dépendances nécessaires :
+2. Créez un environnement virtuel :
+
+```bash
+python -m venv venv
+```
+
+3. Activez l'environnement virtuel :
+
+- Sur Windows :
+
+```bash
+.\venv\Scripts\activate
+```
+
+- Sur Unix ou MacOS :
+
+```bash
+source venv/bin/activate
+```
+
+4. Installez les dépendances nécessaires :
 
 ```bash
 pip install fastapi uvicorn
