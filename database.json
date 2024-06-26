@@ -7,11 +7,6 @@
             "email": "jean.dupont@example.com",
             "grades": [
                 {
-                    "id": "12d6cb45-210d-4609-b90d-53ff41db6f0a",
-                    "course": "Math\u00e9matiques",
-                    "score": 15
-                },
-                {
                     "id": "123e4567-e89b-12d3-a456-426614174009",
                     "course": "Physique",
                     "score": 12
@@ -102,6 +97,48 @@
             "first_name": "John",
             "last_name": "Doe",
             "email": "john.doe@example.com",
+            "grades": []
+        },
+        {
+            "id": "489754a2-c66a-43ae-b7bf-d592343dc1f6",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "grades": []
+        },
+        {
+            "id": "f9932b8d-ff6a-4f3d-be8d-a858442e5e55",
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "email": "jane.doe@example.com",
+            "grades": []
+        },
+        {
+            "id": "65fb29cb-0f00-462f-9bf8-f6e9411a1836",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "grades": []
+        },
+        {
+            "id": "205a8087-3428-4c92-a878-f50e45cabde5",
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "email": "jane.doe@example.com",
+            "grades": []
+        },
+        {
+            "id": "c80bde1e-f71f-4be9-b2eb-ab9336844a90",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "grades": []
+        },
+        {
+            "id": "495b0e05-2509-43db-81d0-c681e6cd9909",
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "email": "jane.doe@example.com",
             "grades": []
         }
     ]

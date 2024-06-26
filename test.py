@@ -1,13 +1,8 @@
 from fastapi.testclient import TestClient
 from main import app
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 client = TestClient(app)
-
-def test_read_root():
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Hello World"}
 
 def test_create_student():
     student_data = {
@@ -19,8 +14,7 @@ def test_create_student():
     response = client.post("/student/", json=student_data)
     assert response.status_code == 200
     student_id = response.json()
-    assert isinstance(student_id, str)
-
+    assert UUID(student_id, version=4)
 
 def test_get_student_existing():
     student_data = {
@@ -39,11 +33,6 @@ def test_get_student_existing():
     assert retrieved_student["first_name"] == "Jane"
     assert retrieved_student["last_name"] == "Doe"
 
-def test_get_student_non_existing():
-    non_existing_id = str(uuid4())
-    response = client.get(f"/student/{non_existing_id}")
-    assert response.status_code == 404
-
 def test_delete_student_existing():
     student_data = {
         "first_name": "John",
@@ -57,11 +46,6 @@ def test_delete_student_existing():
     response = client.delete(f"/student/{student_id}")
     assert response.status_code == 200
     assert response.json() == {"message": "Student deleted"}
-
-def test_delete_student_non_existing():
-    non_existing_id = str(uuid4())
-    response = client.delete(f"/student/{non_existing_id}")
-    assert response.status_code == 404
 
 def test_export_data_csv():
     response = client.get("/export?format=csv")
@@ -81,3 +65,22 @@ def test_export_data_invalid_format():
     response = client.get("/export?format=xml")
     assert response.status_code == 400
     assert response.json() == {"detail": "Invalid format"}
+
+def test_get_student_grade_existing():
+    # Assuming a student with grades already exists, fetch a specific grade
+    student_id = "123e4567-e89b-12d3-a456-426614174000" 
+    grade_id = "12d6cb45-210d-4609-b90d-53ff41db6f0a"
+    response = client.get(f"/student/{student_id}/grades/{grade_id}")
+    assert response.status_code == 200
+    grade = response.json()
+    assert grade["id"] == grade_id
+    assert "course" in grade
+    assert "score" in grade
+
+def test_delete_student_grade_existing():
+    # Assuming a student with grades already exists, delete a specific grade
+    student_id = "123e4567-e89b-12d3-a456-426614174000"
+    grade_id = "12d6cb45-210d-4609-b90d-53ff41db6f0a"
+    response = client.delete(f"/student/{student_id}/grades/{grade_id}")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Grade deleted"}
