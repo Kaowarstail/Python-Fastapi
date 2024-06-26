@@ -1,40 +1,94 @@
 {
-    "students": [
-      {
-        "id": 1,
-        "first_name": "Jean",
-        "last_name": "Dupont",
-        "email": "jean.dupont@example.com",
-        "grades": [
-          {
-            "id": 1,
-            "course": "Mathématiques",
-            "score": 15
-          },
-          {
-            "id": 2,
-            "course": "Physique",
-            "score": 12
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "first_name": "Marie",
-        "last_name": "Curie",
-        "email": "marie.curie@example.com",
-        "grades": [
-          {
-            "id": 3,
-            "course": "Chimie",
-            "score": 18
-          },
-          {
-            "id": 4,
-            "course": "Biologie",
-            "score": 17
-          }
-        ]
-      }
-    ]
-  }
+  "students": [
+    {
+      "id": 1,
+      "first_name": "Jean",
+      "last_name": "Dupont",
+      "email": "jean.dupont@example.com",
+      "grades": [
+        {
+          "id": 1,
+          "course": "Mathématiques",
+          "score": 15
+        },
+        {
+          "id": 2,
+          "course": "Physique",
+          "score": 12
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "first_name": "Marie",
+      "last_name": "Curie",
+      "email": "marie.curie@example.com",
+      "grades": [
+        {
+          "id": 3,
+          "course": "Chimie",
+          "score": 18
+        },
+        {
+          "id": 4,
+          "course": "Biologie",
+          "score": 17
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "first_name": "Albert",
+      "last_name": "Einstein",
+      "email": "albert.einstein@example.com",
+      "grades": [
+        {
+          "id": 5,
+          "course": "Mathématiques",
+          "score": 20
+        },
+        {
+          "id": 6,
+          "course": "Physique",
+          "score": 19
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "first_name": "Ada",
+      "last_name": "Lovelace",
+      "email": "ada.lovelace@example.com",
+      "grades": [
+        {
+          "id": 7,
+          "course": "Mathématiques",
+          "score": 16
+        },
+        {
+          "id": 8,
+          "course": "Informatique",
+          "score": 14
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "first_name": "Alan",
+      "last_name": "Turing",
+      "email": "alan.turing@example.com",
+      "grades": [
+        {
+          "id": 9,
+          "course": "Mathématiques",
+          "score": 18
+        },
+        {
+          "id": 10,
+          "course": "Informatique",
+          "score": 20
+        }
+      ]
+    }
+  ]
+}
