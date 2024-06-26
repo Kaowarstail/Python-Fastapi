@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from models import Student
+from models import Student, Grade
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
 from uuid import UUID, uuid4
 from database import load_database, save_database
@@ -32,6 +32,31 @@ async def delete_student(student_id: UUID):
         return {"message": "Student deleted"}
     else:
         raise HTTPException(status_code=404, detail="Student not found")
+
+@router.get("/student/{student_id}/grades/{grade_id}", response_model=Grade)
+async def get_student_grade(student_id: UUID, grade_id: UUID):
+    db = load_database()
+    student = db.get(student_id)
+    if student is None:
+        raise HTTPException(status_code=404, detail="Student not found")
+    for grade in student['grades']:
+        if UUID(grade['id']) == grade_id:
+            return Grade(**grade)
+    raise HTTPException(status_code=404, detail="Grade not found")
+
+@router.delete("/student/{student_id}/grades/{grade_id}")
+async def delete_student_grade(student_id: UUID, grade_id: UUID):
+    db = load_database()
+    student = db.get(student_id)
+    if student is None:
+        raise HTTPException(status_code=404, detail="Student not found")
+    grades = student['grades']
+    grade_index = next((index for (index, d) in enumerate(grades) if UUID(d["id"]) == grade_id), None)
+    if grade_index is None:
+        raise HTTPException(status_code=404, detail="Grade not found")
+    del grades[grade_index]
+    save_database(db)
+    return {"message": "Grade deleted"}
     
 @router.get("/export")
 async def export_data(format: str = "csv"):

@@ -7,12 +7,12 @@
             "email": "jean.dupont@example.com",
             "grades": [
                 {
-                    "id": 1,
+                    "id": "12d6cb45-210d-4609-b90d-53ff41db6f0a",
                     "course": "Math\u00e9matiques",
                     "score": 15
                 },
                 {
-                    "id": 2,
+                    "id": "123e4567-e89b-12d3-a456-426614174009",
                     "course": "Physique",
                     "score": 12
                 }
@@ -25,12 +25,12 @@
             "email": "marie.curie@example.com",
             "grades": [
                 {
-                    "id": 3,
+                    "id": "123e4567-e89b-12d3-a456-426614174010",
                     "course": "Chimie",
                     "score": 18
                 },
                 {
-                    "id": 4,
+                    "id": "123e4567-e89b-12d3-a456-426614174011",
                     "course": "Biologie",
                     "score": 17
                 }
@@ -43,12 +43,12 @@
             "email": "albert.einstein@example.com",
             "grades": [
                 {
-                    "id": 5,
+                    "id": "123e4567-e89b-12d3-a456-426614174012",
                     "course": "Math\u00e9matiques",
                     "score": 20
                 },
                 {
-                    "id": 6,
+                    "id": "123e4567-e89b-12d3-a456-426614174013",
                     "course": "Physique",
                     "score": 19
                 }
@@ -61,12 +61,12 @@
             "email": "ada.lovelace@example.com",
             "grades": [
                 {
-                    "id": 7,
+                    "id": "123e4567-e89b-12d3-a456-426614174014",
                     "course": "Math\u00e9matiques",
                     "score": 16
                 },
                 {
-                    "id": 8,
+                    "id": "123e4567-e89b-12d3-a456-426614174015",
                     "course": "Informatique",
                     "score": 14
                 }
@@ -79,12 +79,12 @@
             "email": "alan.turing@example.com",
             "grades": [
                 {
-                    "id": 9,
+                    "id": "123e4567-e89b-12d3-a456-426614174016",
                     "course": "Math\u00e9matiques",
                     "score": 18
                 },
                 {
-                    "id": 10,
+                    "id": "123e4567-e89b-12d3-a456-426614174017",
                     "course": "Informatique",
                     "score": 20
                 }
