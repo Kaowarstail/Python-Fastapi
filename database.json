@@ -1,94 +1,108 @@
 {
-  "students": [
-    {
-      "id": "123e4567-e89b-12d3-a456-426614174000",
-      "first_name": "Jean",
-      "last_name": "Dupont",
-      "email": "jean.dupont@example.com",
-      "grades": [
+    "students": [
         {
-          "id": 1,
-          "course": "Mathématiques",
-          "score": 15
+            "id": "123e4567-e89b-12d3-a456-426614174000",
+            "first_name": "Jean",
+            "last_name": "Dupont",
+            "email": "jean.dupont@example.com",
+            "grades": [
+                {
+                    "id": 1,
+                    "course": "Math\u00e9matiques",
+                    "score": 15
+                },
+                {
+                    "id": 2,
+                    "course": "Physique",
+                    "score": 12
+                }
+            ]
         },
         {
-          "id": 2,
-          "course": "Physique",
-          "score": 12
-        }
-      ]
-    },
-    {
-      "id": "123e4567-e89b-12d3-a456-426614174001",
-      "first_name": "Marie",
-      "last_name": "Curie",
-      "email": "marie.curie@example.com",
-      "grades": [
-        {
-          "id": 3,
-          "course": "Chimie",
-          "score": 18
+            "id": "123e4567-e89b-12d3-a456-426614174001",
+            "first_name": "Marie",
+            "last_name": "Curie",
+            "email": "marie.curie@example.com",
+            "grades": [
+                {
+                    "id": 3,
+                    "course": "Chimie",
+                    "score": 18
+                },
+                {
+                    "id": 4,
+                    "course": "Biologie",
+                    "score": 17
+                }
+            ]
         },
         {
-          "id": 4,
-          "course": "Biologie",
-          "score": 17
-        }
-      ]
-    },
-    {
-      "id": "123e4567-e89b-12d3-a456-426614174002",
-      "first_name": "Albert",
-      "last_name": "Einstein",
-      "email": "albert.einstein@example.com",
-      "grades": [
-        {
-          "id": 5,
-          "course": "Mathématiques",
-          "score": 20
+            "id": "123e4567-e89b-12d3-a456-426614174002",
+            "first_name": "Albert",
+            "last_name": "Einstein",
+            "email": "albert.einstein@example.com",
+            "grades": [
+                {
+                    "id": 5,
+                    "course": "Math\u00e9matiques",
+                    "score": 20
+                },
+                {
+                    "id": 6,
+                    "course": "Physique",
+                    "score": 19
+                }
+            ]
         },
         {
-          "id": 6,
-          "course": "Physique",
-          "score": 19
-        }
-      ]
-    },
-    {
-      "id": "123e4567-e89b-12d3-a456-426614174003",
-      "first_name": "Ada",
-      "last_name": "Lovelace",
-      "email": "ada.lovelace@example.com",
-      "grades": [
-        {
-          "id": 7,
-          "course": "Mathématiques",
-          "score": 16
+            "id": "123e4567-e89b-12d3-a456-426614174003",
+            "first_name": "Ada",
+            "last_name": "Lovelace",
+            "email": "ada.lovelace@example.com",
+            "grades": [
+                {
+                    "id": 7,
+                    "course": "Math\u00e9matiques",
+                    "score": 16
+                },
+                {
+                    "id": 8,
+                    "course": "Informatique",
+                    "score": 14
+                }
+            ]
         },
         {
-          "id": 8,
-          "course": "Informatique",
-          "score": 14
-        }
-      ]
-    },
-    {
-      "id": "123e4567-e89b-12d3-a456-426614174004",
-      "first_name": "Alan",
-      "last_name": "Turing",
-      "email": "alan.turing@example.com",
-      "grades": [
-        {
-          "id": 9,
-          "course": "Mathématiques",
-          "score": 18
+            "id": "123e4567-e89b-12d3-a456-426614174004",
+            "first_name": "Alan",
+            "last_name": "Turing",
+            "email": "alan.turing@example.com",
+            "grades": [
+                {
+                    "id": 9,
+                    "course": "Math\u00e9matiques",
+                    "score": 18
+                },
+                {
+                    "id": 10,
+                    "course": "Informatique",
+                    "score": 20
+                }
+            ]
         },
         {
-          "id": 10,
-          "course": "Informatique",
-          "score": 20
+            "id": "4cb0e153-e9ea-49ba-8e11-943c6d14679c",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "grades": []
+        },
+        {
+            "id": "b22d585e-3347-4081-8cd5-0ab4bcde19d5",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "grades": []
         }
-      ]
-    }
-  ]
+    ]
 }

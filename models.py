@@ -1,5 +1,6 @@
-from pydantic import BaseModel, EmailStr, Field, UUID4
-from typing import List
+from pydantic import BaseModel, Field, UUID4
+from typing import List, Optional
+from uuid import UUID, uuid4
 
 class Grade(BaseModel):
     id: UUID4
@@ -7,8 +8,8 @@ class Grade(BaseModel):
     score: int
 
 class Student(BaseModel):
-    id: UUID4
+    id: Optional[UUID] = Field(default_factory=uuid4)
     first_name: str
     last_name: str
-    email: EmailStr
-    grades: List[Grade]
+    email: str
+    grades: Optional[List[int]] = None
