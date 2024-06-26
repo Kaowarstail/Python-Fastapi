@@ -1,0 +1,40 @@
+{
+    "students": [
+      {
+        "id": 1,
+        "first_name": "Jean",
+        "last_name": "Dupont",
+        "email": "jean.dupont@example.com",
+        "grades": [
+          {
+            "id": 1,
+            "course": "Mathématiques",
+            "score": 15
+          },
+          {
+            "id": 2,
+            "course": "Physique",
+            "score": 12
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "first_name": "Marie",
+        "last_name": "Curie",
+        "email": "marie.curie@example.com",
+        "grades": [
+          {
+            "id": 3,
+            "course": "Chimie",
+            "score": 18
+          },
+          {
+            "id": 4,
+            "course": "Biologie",
+            "score": 17
+          }
+        ]
+      }
+    ]
+  }
