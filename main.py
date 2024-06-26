@@ -1,8 +1,8 @@
+import json
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, EmailStr, Field, UUID4
 from typing import List, Optional
 from uuid import uuid4, UUID
-import json
 
 app = FastAPI()
 
@@ -10,7 +10,7 @@ app = FastAPI()
 class Grade(BaseModel):
     id: UUID4 = Field(default_factory=uuid4)
     course: str
-    score: int = Field(..., ge=0, le=20)
+    score: int = Field(..., ge=0, le=100)
 
 class Student(BaseModel):
     id: UUID4 = Field(default_factory=uuid4)
@@ -23,14 +23,17 @@ class Student(BaseModel):
 def load_database():
     with open("database.json", "r") as db_file:
         data = json.load(db_file)
-        # Convertir les ID en UUID sans les convertir en chaînes
+        # Charger les ID en tant que UUID directement
         for student in data["students"]:
-            # Assurez-vous que l'ID est un entier long pour UUID
-            student["id"] = UUID(int=student["id"])
+            student["id"] = UUID(str(student["id"]))
             for grade in student["grades"]:
-                # De même pour les ID des notes
-                grade["id"] = UUID(int=grade["id"])
-        return {student["id"]: student for student in data["students"]}
+                # Assurez-vous que l'ID de grade est une chaîne bien formée avant de la convertir en UUID
+                try:
+                    grade["id"] = UUID(str(grade["id"]))
+                except ValueError:
+                    # Générer un nouvel UUID si l'ID de grade n'est pas valide
+                    grade["id"] = uuid4()
+        return {UUID(str(student["id"])): student for student in data["students"]}
 
 students_db = load_database()
 
@@ -57,8 +60,6 @@ async def delete_student(student_id: UUID4):
         return {"message": "Student deleted"}
     else:
         raise HTTPException(status_code=404, detail="Student not found")
-
-# Ajoutez d'autres endpoints ici selon les spécifications
 
 if __name__ == "__main__":
     import uvicorn

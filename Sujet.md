@@ -13,6 +13,7 @@ Ensure your code is well-commented, explaining the rationale behind your decisio
 ```html
 <h1>Hello <span>{name}</span></h1>
 ```
+
 Where `name` (without the curly braces `{}`) is a parameter given in the URL like `/arnaud`. Here, `arnaud` would be used in the HTML to say hello.
 
 ### Defining Pydantic Models

@@ -1,7 +1,7 @@
 {
   "students": [
     {
-      "id": 1,
+      "id": "123e4567-e89b-12d3-a456-426614174000",
       "first_name": "Jean",
       "last_name": "Dupont",
       "email": "jean.dupont@example.com",
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "123e4567-e89b-12d3-a456-426614174001",
       "first_name": "Marie",
       "last_name": "Curie",
       "email": "marie.curie@example.com",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "123e4567-e89b-12d3-a456-426614174002",
       "first_name": "Albert",
       "last_name": "Einstein",
       "email": "albert.einstein@example.com",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "123e4567-e89b-12d3-a456-426614174003",
       "first_name": "Ada",
       "last_name": "Lovelace",
       "email": "ada.lovelace@example.com",
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "123e4567-e89b-12d3-a456-426614174004",
       "first_name": "Alan",
       "last_name": "Turing",
       "email": "alan.turing@example.com",
