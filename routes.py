@@ -40,7 +40,11 @@ async def get_student_grade(student_id: UUID, grade_id: UUID):
     if student is None:
         raise HTTPException(status_code=404, detail="Student not found")
     for grade in student['grades']:
-        if UUID(grade['id']) == grade_id:
+        try:
+            grade_uuid = UUID(grade['id'], version=4)
+        except ValueError:
+            continue  
+        if grade_uuid == grade_id:
             return Grade(**grade)
     raise HTTPException(status_code=404, detail="Grade not found")
 

@@ -1,13 +1,13 @@
 {
     "students": [
         {
-            "id": "123e4567-e89b-12d3-a456-426614174000",
+            "id": "54e37f3c-ca5c-4876-bbf4-482a88190c83",
             "first_name": "Jean",
             "last_name": "Dupont",
             "email": "jean.dupont@example.com",
             "grades": [
                 {
-                    "id": "123e4567-e89b-12d3-a456-426614174009",
+                    "id": "edf9f1ae-0220-4a91-b420-fb867b6b7fda",
                     "course": "Physique",
                     "score": 12
                 }
