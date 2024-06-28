@@ -1,6 +1,6 @@
 # M1-CTO TP: Gestion des Étudiants avec FastAPI
 
-Ce projet est une application FastAPI conçue pour gérer les informations des étudiants et leurs notes. Il permet de créer, récupérer, et supprimer des étudiants et leurs notes via une API RESTful.
+Ce projet est une application FastAPI conçue pour gérer les informations des étudiants et leurs notes. Il permet de créer, récupérer, et supprimer des étudiants et leurs notes via une API RESTful. L'utilisation d'un fichier JSON comme base de données simplifie le stockage et la manipulation des données sans nécessiter une base de données relationnelle ou NoSQL complexe. Cela rend le projet plus accessible et facile à configurer pour des fins éducatives ou de petits projets.
 
 ## Fonctionnalités
 
@@ -12,9 +12,10 @@ Ce projet est une application FastAPI conçue pour gérer les informations des �
 
 ## Technologies Utilisées
 
-- FastAPI
-- Pydantic
-- Uvicorn
+- FastAPI : Un framework web moderne et rapide pour construire des APIs avec Python 3.7+.
+- Pydantic : Utilisé pour la validation des données et la gestion des modèles.
+- Uvicorn : Un serveur ASGI léger pour exécuter l'application FastAPI.
+- JSON : Utilisé comme format de stockage de données pour sa simplicité et sa facilité d'utilisation avec Python.
 
 ## Installation
 
