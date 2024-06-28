@@ -11,7 +11,7 @@ async def create_student(student: Student):
     db = load_database()
     student_id = uuid4()
     student.id = student_id
-    db[student_id] = student.dict()
+    db[student_id] = student.model_dump()
     save_database(db)
     return student_id
 
@@ -51,7 +51,7 @@ async def get_student_grade(student_id: UUID, grade_id: UUID):
 @router.delete("/student/{student_id}/grades/{grade_id}")
 async def delete_student_grade(student_id: UUID, grade_id: UUID):
     db = load_database()
-    student = db.get(student_id)
+    student = db.get(str(student_id))  
     if student is None:
         raise HTTPException(status_code=404, detail="Student not found")
     grades = student['grades']
@@ -59,17 +59,22 @@ async def delete_student_grade(student_id: UUID, grade_id: UUID):
     if grade_index is None:
         raise HTTPException(status_code=404, detail="Grade not found")
     del grades[grade_index]
-    save_database(db)
+    student['grades'] = grades 
+    db[str(student_id)] = student  
+    save_database(db)  
     return {"message": "Grade deleted"}
     
 @router.get("/export")
 async def export_data(format: str = "csv"):
     db = load_database()
     if format == "json":
-        return JSONResponse(content=db)
+        # Convert UUIDs to strings for JSON export
+        json_db = {str(student_id): {**student_data, "id": str(student_id)} for student_id, student_data in db.items()}
+        return JSONResponse(content=json_db)
     elif format == "csv":
         csv_content = "id,first_name,last_name,email\n"
         for student_id, student_data in db.items():
+            # Convert UUID to string for CSV export
             csv_content += f"{student_id},{student_data['first_name']},{student_data['last_name']},{student_data['email']}\n"
         return PlainTextResponse(content=csv_content)
     else:

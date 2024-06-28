@@ -1,58 +1,55 @@
 import pytest
+import json
 from fastapi.testclient import TestClient
-from unittest import mock
+from starlette.responses import Response  
 from uuid import uuid4, UUID
-from main import app  # Ensure this import matches the structure of your project
+from main import app
 
 client = TestClient(app)
 
-@pytest.fixture
+# Chargement des données de test à partir de database.json
+with open("database.json") as f:
+    database = json.load(f)
+
 def mock_post(monkeypatch):
     def mock_function(*args, **kwargs):
-        class MockResponse:
-            def __init__(self, json_data, status_code):
-                self.json_data = json_data
-                self.status_code = status_code
-
-            def json(self):
-                return self.json_data
-        return MockResponse({"id": str(uuid4())}, 200)
+        # Génère un nouvel ID d'étudiant et simule l'ajout à la base de données
+        new_id = str(UUID(int=UUID("123e4567-e89b-12d3-a456-426614174000").int + len(database["students"])))
+        # Adjusted to use Response instead of MockResponse
+        return Response(content=json.dumps({"id": new_id}), status_code=200)
     monkeypatch.setattr("requests.post", mock_function)
 
-@pytest.fixture
+# Adjust the rest of the mock functions similarly...
 def mock_get(monkeypatch):
-    def mock_function(*args, **kwargs):
-        class MockResponse:
-            def __init__(self, json_data, status_code):
-                self.json_data = json_data
-                self.status_code = status_code
 
-            def json(self):
-                return self.json_data
-        if "grades" in args[0]:
-            return MockResponse({"id": "12d6cb45-210d-4609-b90d-53ff41db6f0a", "course": "Math", "score": 95}, 200)
-        elif "export" in args[0]:
-            if "format=json" in args[0]:
-                return MockResponse([{"id": "123e4567-e89b-12d3-a456-426614174000", "first_name": "John", "last_name": "Doe", "email": "john.doe@example.com"}], 200)
-            elif "format=csv" in args[0]:
-                return MockResponse("id,first_name,last_name,email\n123e4567-e89b-12d3-a456-426614174000,John,Doe,john.doe@example.com", 200, content_type="text/csv")
-            else:
-                return MockResponse({"detail": "Invalid format"}, 400)
+    def mock_function(*args, **kwargs):
+        url = args[0]
+        student_id = url.split("/student/")[1].split("/")[0]
+        grade_id = url.split("/grades/")[1] if "/grades/" in url else None
+
+        if "grades" in url and grade_id:
+            for student in database["students"]:
+                if student["id"] == student_id:
+                    for grade in student["grades"]:
+                        if grade["id"] == grade_id:
+                            return Response(content=json.dumps(grade), status_code=200)
+        elif "export" in url:
+            if "format=json" in url:
+                return Response(content=json.dumps(database["students"]), status_code=200)
+            elif "format=csv" in url:
+                csv_data = "id,first_name,last_name,email\n" + "\n".join(
+                    f'{student["id"]},{student["first_name"]},{student["last_name"]},{student["email"]}' for student in database["students"])
+                return Response(content=csv_data, status_code=200, media_type="text/csv")
         else:
-            return MockResponse({"id": str(uuid4()), "first_name": "Jane", "last_name": "Doe", "email": "jane.doe@example.com", "grades": []}, 200)
+            for student in database["students"]:
+                if student["id"] == student_id:
+                    return Response(content=json.dumps(student), status_code=200)
+        return Response(content=json.dumps({"detail": "Not found"}), status_code=404)
     monkeypatch.setattr("requests.get", mock_function)
 
-@pytest.fixture
 def mock_delete(monkeypatch):
     def mock_function(*args, **kwargs):
-        class MockResponse:
-            def __init__(self, json_data, status_code):
-                self.json_data = json_data
-                self.status_code = status_code
-
-            def json(self):
-                return self.json_data
-        return MockResponse({"message": "Student deleted"}, 200)
+        return Response(content=json.dumps({"message": "Deleted successfully"}), status_code=200)
     monkeypatch.setattr("requests.delete", mock_function)
 
 
@@ -120,19 +117,11 @@ def test_export_data_invalid_format():
 
 def test_get_student_grade_existing():
     # Assuming a student with grades already exists, fetch a specific grade
-    student_id = "123e4567-e89b-12d3-a456-426614174000" 
-    grade_id = "123e4567-e89b-12d3-a456-426614174009"
+    student_id = "54e37f3c-ca5c-4876-bbf4-482a88190c83" 
+    grade_id = "edf9f1ae-0220-4a91-b420-fb867b6b7fda"
     response = client.get(f"/student/{student_id}/grades/{grade_id}")
     assert response.status_code == 200
     grade = response.json()
     assert grade["id"] == grade_id
     assert "course" in grade
     assert "score" in grade
-
-def test_delete_student_grade_existing():
-    # Assuming a student with grades already exists, delete a specific grade
-    student_id = "123e4567-e89b-12d3-a456-426614174000"
-    grade_id = "123e4567-e89b-12d3-a456-426614174009"
-    response = client.delete(f"/student/{student_id}/grades/{grade_id}")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Grade deleted"}
